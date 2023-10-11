@@ -1,13 +1,19 @@
+package StudentList.java;
+
 import java.io.*;
 import java.text.*;
 import java.util.*;
-public class StudentList {
-	public static void main(String[] args) {
+public class StudentList 
+{
+	public static void main(String[] args) 
+	{
 
 //		Check arguments
-		if(args[0].equals("a")) {
+		if(args[0].equals("a")) 
+		{
 			System.out.println("Loading data ...");			
-			try {
+			try 
+			{
 			BufferedReader s = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
@@ -20,22 +26,26 @@ public class StudentList {
 		else if(args[0].equals("r")) 
 		{
 			System.out.println("Loading data ...");			
-			try {
+			try 
+			{
 			BufferedReader s = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
-			System.out.println(r);
+			System.out.println();
 			String i[] = r.split(",");	
 			Random x = new Random();
-				int y = x.nextInt();
+				int y = x.nextInt(5);
 					System.out.println(i[y]);
-			} catch (Exception e){} 
+			} 
+			catch (Exception e){} 
 			System.out.println("Data Loaded.");			
 		}
-		else if(args[0].contains("+")){
+		else if(args[0].contains("+"))
+		{
 			System.out.println("Loading data ...");			
-			try {
+			try 
+			{
 			BufferedWriter s = new BufferedWriter(
 					new FileWriter("students.txt", true));
 			String t = args[0].substring(1);
@@ -45,7 +55,8 @@ public class StudentList {
 	        String fd= dateFormat.format(d);
 			s.write(", "+t+"\nList last updated on "+fd);
 			s.close();
-			} catch (Exception e){}
+			} 
+			catch (Exception e){}
 							
 			System.out.println("Data Loaded.");	
 		}
@@ -60,19 +71,23 @@ public class StudentList {
 			String i[] = r.split(",");	
 			boolean done = false;
 			String t = args[0].substring(1);
-			for(int idx = 0; idx<i.length && !done; idx++) {
-				if(i[idx].equals(t)) {
+			for(int idx = 0; idx<i.length && !done; idx++) 
+			{
+				if(i[idx].equals(t)) 
+				{
 					System.out.println("We found it!");
 						done=true;
 				}
 			}
-			} catch (Exception e){} 
+			} 
+			catch (Exception e){} 
 			System.out.println("Data Loaded.");				
 		}
 		else if(args[0].contains("c")) 
 		{
 			System.out.println("Loading data ...");			
-			try {
+			try 
+			{
 			BufferedReader s = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
@@ -80,15 +95,17 @@ public class StudentList {
 			char a[] = D.toCharArray();			
 			boolean in_word = false;
 			int count=0;
-			for(char c:a) {
+			for(char c:a) 
+			{
 				if(c ==' ') 
 				{
 					if (!in_word) {	count++; in_word =true;	}
 					else { in_word=false;}			
 				}
 			}
-			System.out.println(count +" word(s) found " + a.length);
-			} catch (Exception e){} 
+			System.out.println(count +" word(s) found ");
+			} 
+			catch (Exception e){} 
 			System.out.println("Data Loaded.");				
 		}
 	}
